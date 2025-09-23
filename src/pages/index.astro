@@ -1,0 +1,868 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const services = [
+  {
+    icon: '🌐',
+    title: 'Strony internetowe',
+    description: 'Profesjonalne strony WWW, które konwertują. Od wizytówek po zaawansowane portale.',
+    features: ['PageSpeed 95+', 'Responsywny design', 'SEO w standardzie', 'CMS do edycji'],
+    href: '/uslugi/strony-internetowe'
+  },
+  {
+    icon: '🛒',
+    title: 'Sklepy internetowe',
+    description: 'Wydajne sklepy e-commerce, które sprzedają. WooCommerce, PrestaShop, własne rozwiązania.',
+    features: ['Integracje płatności', 'Panel administracyjny', 'Automatyzacje', 'Allegro/Amazon'],
+    href: '/uslugi/sklepy-internetowe'
+  },
+  {
+    icon: '⚡',
+    title: 'Aplikacje webowe',
+    description: 'Zaawansowane aplikacje SaaS i systemy biznesowe. React, Node.js, bazy danych.',
+    features: ['Panele klienta', 'API & integracje', 'Systemy CRM/ERP', 'Aplikacje PWA'],
+    href: '/uslugi/aplikacje-webowe'
+  }
+];
+
+const features = [
+  {
+    title: 'Kompleksowa realizacja',
+    description: 'Otrzymujesz gotową do działania stronę. Zajmujemy się wszystkim: od projektu, przez programowanie i treści, po wdrożenie analytics, cookies, hosting i certyfikaty SSL.',
+    icon: '🎯'
+  },
+  {
+    title: 'Najwyższa jakość kodu',
+    description: 'Tworzymy własne, zoptymalizowane rozwiązania. Nie używamy gotowych szablonów. Każda strona hostowana na AWS z indywidualnym IP dla lepszego SEO.',
+    icon: '⚡'
+  },
+  {
+    title: 'Marketing + Technologia',
+    description: '15 lat doświadczenia w copywritingu i SEO. Łączymy wiedzę marketingową z najnowszymi technologiami, tworząc strony które sprzedają.',
+    icon: '📈'
+  },
+  {
+    title: 'Lokalne wsparcie',
+    description: 'Jesteśmy z Torunia. Możemy spotkać się osobiście, podpisać umowę, wystawić fakturę. Po wdrożeniu zawsze jesteśmy dostępni.',
+    icon: '🤝'
+  }
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Analiza potrzeb',
+    description: 'Spotykamy się osobiście lub online. Analizujemy Twoje cele biznesowe i konkurencję.',
+    duration: '1-2 dni'
+  },
+  {
+    step: '02',
+    title: 'Projekt i strategia',
+    description: 'Projektujemy strukturę, wygląd i funkcjonalności. Przygotowujemy strategię SEO i treści.',
+    duration: '3-5 dni'
+  },
+  {
+    step: '03',
+    title: 'Realizacja',
+    description: 'Programujemy stronę, integrujemy systemy, optymalizujemy wydajność i SEO.',
+    duration: '7-21 dni'
+  },
+  {
+    step: '04',
+    title: 'Wdrożenie i wsparcie',
+    description: 'Publikujemy stronę, szkolimy z obsługi CMS, zapewniamy gwarancję i wsparcie.',
+    duration: '2-3 dni'
+  }
+];
+
+const testimonials = [
+  {
+    author: 'Michał Kowalski',
+    company: 'GrandKuchnie.pl',
+    content: 'Profesjonalne podejście od początku do końca. Strona jest szybka, ładna i przyciąga klientów. Wzrost zapytań o 300%!',
+    rating: 5
+  },
+  {
+    author: 'Anna Nowak',
+    company: 'Meble-Bydgoszcz.pl',
+    content: 'Świetna współpraca! Dotrzymali terminów, cena adekwatna do jakości. Strona wysoko w Google już po 2 miesiącach.',
+    rating: 5
+  },
+  {
+    author: 'Piotr Wiśniewski',
+    company: 'TechSolutions Sp. z o.o.',
+    content: 'Aplikacja webowa działa perfekcyjnie. Doceniam profesjonalizm i wsparcie techniczne po wdrożeniu.',
+    rating: 5
+  }
+];
+
+const stats = [
+  { value: '15+', label: 'lat doświadczenia' },
+  { value: '50+', label: 'zrealizowanych projektów' },
+  { value: '95+', label: 'średni PageSpeed' },
+  { value: '100%', label: 'zadowolonych klientów' }
+];
+---
+
+<Layout
+  title="Tworzenie stron internetowych Toruń - Strony WWW, Sklepy, Aplikacje"
+  description="Profesjonalne tworzenie stron internetowych w Toruniu. ✅ 15 lat doświadczenia ✅ PageSpeed 95+ ✅ SEO w cenie ✅ Lokalne wsparcie. Sprawdź ofertę!"
+  keywords="tworzenie stron internetowych toruń, strony www toruń, projektowanie stron toruń, agencja interaktywna toruń, strony internetowe toruń"
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <Container>
+      <div class="hero-content">
+        <Badge variant="primary" class="hero-badge">
+          🚀 Agencja interaktywna z Torunia
+        </Badge>
+        
+        <h1 class="hero-title">
+          Tworzymy <span class="gradient-text">strony internetowe</span>,
+          które przyciągają klientów
+        </h1>
+        
+        <p class="hero-description">
+          Profesjonalne strony WWW, sklepy internetowe i aplikacje webowe dla firm z Torunia i okolic. 
+          <strong>15 lat doświadczenia</strong>, <strong>50+ realizacji</strong>, <strong>PageSpeed 95+</strong>.
+        </p>
+        
+        <div class="hero-cta">
+          <Button href="/kontakt" variant="primary" size="lg">
+            Zamów darmową wycenę
+            <svg class="button-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </Button>
+          <Button href="/realizacje" variant="outline" size="lg">
+            Zobacz realizacje
+          </Button>
+        </div>
+        
+        <div class="hero-stats">
+          {stats.map((stat) => (
+            <div class="stat">
+              <strong class="stat-value">{stat.value}</strong>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="browser-mockup">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="browser-url">torweb.pl</div>
+          </div>
+          <div class="browser-content">
+            <div class="demo-header">
+              <div class="demo-nav"></div>
+              <div class="demo-nav"></div>
+              <div class="demo-nav"></div>
+            </div>
+            <div class="demo-hero">
+              <div class="demo-title"></div>
+              <div class="demo-text"></div>
+              <div class="demo-button"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Co możemy dla Ciebie <span class="gradient-text">stworzyć?</span>
+        </h2>
+        <p class="section-description">
+          Kompleksowe usługi tworzenia stron internetowych i aplikacji webowych
+        </p>
+      </div>
+      
+      <div class="services-grid">
+        {services.map((service) => (
+          <Card href={service.href} class="service-card">
+            <div class="service-icon">{service.icon}</div>
+            <h3 class="service-title">{service.title}</h3>
+            <p class="service-description">{service.description}</p>
+            <ul class="service-features">
+              {service.features.map((feature) => (
+                <li>
+                  <svg class="feature-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <span class="service-link">
+              Dowiedz się więcej
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Dlaczego warto wybrać <span class="gradient-text">TorWeb.pl?</span>
+        </h2>
+        <p class="section-description">
+          Łączymy profesjonalizm, najnowsze technologie i lokalne wsparcie
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature) => (
+          <div class="feature" data-animate>
+            <div class="feature-icon">{feature.icon}</div>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-description">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Jak wygląda <span class="gradient-text">współpraca?</span>
+        </h2>
+        <p class="section-description">
+          Prosty i transparentny proces od pomysłu do wdrożenia
+        </p>
+      </div>
+      
+      <div class="process-timeline">
+        {process.map((item, index) => (
+          <div class="process-step" data-animate>
+            <div class="step-number">{item.step}</div>
+            <div class="step-content">
+              <h3 class="step-title">{item.title}</h3>
+              <p class="step-description">{item.description}</p>
+              <span class="step-duration">{item.duration}</span>
+            </div>
+            {index < process.length - 1 && <div class="step-connector"></div>}
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Co mówią o nas <span class="gradient-text">klienci?</span>
+        </h2>
+        <p class="section-description">
+          Opinie firm, dla których stworzyliśmy strony internetowe
+        </p>
+      </div>
+      
+      <div class="testimonials-grid">
+        {testimonials.map((testimonial) => (
+          <Card class="testimonial-card">
+            <div class="testimonial-rating">
+              {[...Array(testimonial.rating)].map(() => (
+                <svg class="star" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 1L12.39 6.36L18.18 7.18L14.09 11.16L15.09 16.92L10 14.13L4.91 16.92L5.91 11.16L1.82 7.18L7.61 6.36L10 1Z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="testimonial-content">"{testimonial.content}"</p>
+            <div class="testimonial-author">
+              <strong>{testimonial.author}</strong>
+              <span>{testimonial.company}</span>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta section">
+    <Container>
+      <div class="cta-content">
+        <h2 class="cta-title">
+          Potrzebujesz profesjonalnej strony internetowej?
+        </h2>
+        <p class="cta-description">
+          Skontaktuj się z nami i otrzymaj darmową wycenę w 24h.
+          Spotkajmy się w Toruniu na kawę i omówmy Twój projekt!
+        </p>
+        <div class="cta-buttons">
+          <Button href="/kontakt" variant="white" size="lg">
+            Zamów darmową wycenę
+          </Button>
+          <a href="tel:+48509370772" class="cta-phone">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 3C2 2.44772 2.44772 2 3 2H6.15287C6.64171 2 7.0589 2.35341 7.13927 2.8356L7.87858 7.27147C7.95075 7.70451 7.73206 8.13397 7.3394 8.3303L5.79126 9.10437C6.90756 11.8783 9.12168 14.0924 11.8956 15.2087L12.6697 13.6606C12.866 13.2679 13.2955 13.0492 13.7285 13.1214L18.1644 13.8607C18.6466 13.9411 19 14.3583 19 14.8471V18C19 18.5523 18.5523 19 18 19H16C8.26801 19 2 12.732 2 5V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            +48 509 370 772
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--color-light) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-title {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    animation: slideDown 0.8s ease-out;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: var(--text-xl);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-xl);
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-bottom: var(--space-2xl);
+    animation: fadeIn 1s ease-out;
+  }
+
+  .button-icon {
+    margin-left: 0.5rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    animation: scaleIn 1s ease-out;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+  }
+
+  .hero-visual {
+    margin-top: var(--space-3xl);
+    animation: slideUp 1s ease-out;
+  }
+
+  .browser-mockup {
+    max-width: 48rem;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+  }
+
+  .browser-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-gray-100);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .browser-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .browser-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-gray-400);
+  }
+
+  .browser-dots span:first-child { background: #ff5f57; }
+  .browser-dots span:nth-child(2) { background: #ffbd2e; }
+  .browser-dots span:nth-child(3) { background: #28ca42; }
+
+  .browser-url {
+    flex: 1;
+    text-align: center;
+    padding: 0.25rem 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+  }
+
+  .browser-content {
+    padding: var(--space-xl);
+    min-height: 400px;
+    background: linear-gradient(180deg, var(--color-light) 0%, white 100%);
+  }
+
+  .demo-header {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .demo-nav {
+    width: 80px;
+    height: 12px;
+    background: var(--color-gray-300);
+    border-radius: var(--radius-full);
+  }
+
+  .demo-hero {
+    text-align: center;
+  }
+
+  .demo-title {
+    width: 300px;
+    height: 20px;
+    background: var(--color-gray-400);
+    border-radius: var(--radius-md);
+    margin: 0 auto var(--space-md);
+  }
+
+  .demo-text {
+    width: 400px;
+    height: 60px;
+    background: var(--color-gray-200);
+    border-radius: var(--radius-md);
+    margin: 0 auto var(--space-lg);
+  }
+
+  .demo-button {
+    width: 150px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-md);
+    margin: 0 auto;
+  }
+
+  /* Services Section */
+  .services {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-description {
+    font-size: var(--text-lg);
+    color: var(--color-gray-600);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .service-card {
+    padding: var(--space-xl);
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .service-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-lg);
+  }
+
+  .service-features {
+    list-style: none;
+    margin-bottom: var(--space-lg);
+  }
+
+  .service-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+  }
+
+  .feature-icon {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    transition: gap var(--transition-fast);
+  }
+
+  .service-card:hover .service-link {
+    gap: 1rem;
+  }
+
+  /* Features Section */
+  .features {
+    background: var(--color-light);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .feature {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .feature.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .feature-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-description {
+    color: var(--color-gray-600);
+    line-height: 1.7;
+  }
+
+  /* Process Section */
+  .process-timeline {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .process-step.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    z-index: 1;
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 0.5rem;
+  }
+
+  .step-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .step-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-sm);
+  }
+
+  .step-duration {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+  }
+
+  .step-connector {
+    position: absolute;
+    left: 2rem;
+    top: 4.5rem;
+    width: 2px;
+    height: calc(100% + var(--space-lg));
+    background: var(--color-gray-300);
+    z-index: 0;
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background: var(--color-light);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .testimonial-card {
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .testimonial-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .star {
+    color: #fbbf24;
+  }
+
+  .testimonial-content {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-lg);
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-author strong {
+    color: var(--color-dark);
+    margin-bottom: 0.25rem;
+  }
+
+  .testimonial-author span {
+    color: var(--color-gray-600);
+    font-size: var(--text-sm);
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-description {
+    font-size: var(--text-lg);
+    opacity: 0.95;
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .cta-phone:hover {
+    transform: scale(1.05);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-grid,
+    .features-grid,
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step-connector {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+
+  /* Section backgrounds */
+  .bg-light {
+    background: var(--color-light);
+  }
+
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+</style>

@@ -1,0 +1,46 @@
+torweb-pl/
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Header.astro
+│   │   │   ├── Footer.astro
+│   │   │   ├── Navigation.astro
+│   │   │   └── MobileMenu.astro
+│   │   ├── sections/
+│   │   │   ├── Hero.astro
+│   │   │   ├── Services.astro
+│   │   │   ├── Features.astro
+│   │   │   ├── Process.astro
+│   │   │   ├── Portfolio.astro
+│   │   │   ├── Pricing.astro
+│   │   │   ├── Testimonials.astro
+│   │   │   ├── FAQ.astro
+│   │   │   └── CTA.astro
+│   │   ├── ui/
+│   │   │   ├── Button.astro
+│   │   │   ├── Card.astro
+│   │   │   ├── Badge.astro
+│   │   │   ├── Heading.astro
+│   │   │   └── Container.astro
+│   │   └── seo/
+│   │       ├── SEOHead.astro
+│   │       └── Schema.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── uslugi/
+│   │   │   ├── sklepy-internetowe.astro
+│   │   │   └── aplikacje-webowe.astro
+│   │   └── kontakt.astro
+│   ├── styles/
+│   │   └── global.css
+│   └── data/
+│       ├── services.ts
+│       ├── portfolio.ts
+│       └── testimonials.ts
+├── public/
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── images/
+└── astro.config.mjs

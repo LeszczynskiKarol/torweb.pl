@@ -1,0 +1,47 @@
+---
+// src/components/ui/Container.astro
+export interface ContainerProps {
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  class?: string;
+}
+
+const { size = 'xl', class: className = '' } = Astro.props as ContainerProps;
+---
+
+<div class={`container container-${size} ${className}`}>
+  <slot />
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  .container-sm {
+    max-width: var(--max-width-3xl);
+  }
+
+  .container-md {
+    max-width: var(--max-width-5xl);
+  }
+
+  .container-lg {
+    max-width: var(--max-width-6xl);
+  }
+
+  .container-xl {
+    max-width: var(--max-width-7xl);
+  }
+
+  .container-full {
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-sm);
+    }
+  }
+</style>

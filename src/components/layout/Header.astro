@@ -1,0 +1,537 @@
+---
+// src/layout/Header.astro
+
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+
+const navigation = [
+  { name: 'Start', href: '/' },
+  { 
+    name: 'Usługi', 
+    href: '#',
+    submenu: [
+      { name: 'Strony internetowe', href: '/uslugi/strony-internetowe' },
+      { name: 'Sklepy internetowe', href: '/uslugi/sklepy-internetowe' },
+      { name: 'Aplikacje webowe', href: '/uslugi/aplikacje-webowe' },
+    ]
+  },
+  { name: 'Realizacje', href: '/realizacje' },
+  { name: 'O nas', href: '/o-nas' },
+  { name: 'Cennik', href: '/cennik' },
+  { name: 'Kontakt', href: '/kontakt' },
+];
+---
+
+<header class="header" id="header">
+  <Container>
+    <nav class="nav" aria-label="Główna nawigacja">
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="TorWeb.pl - Strona główna">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="currentColor" class="logo-bg"/>
+          <path d="M14 12H26V14H22V28H18V14H14V12Z" fill="white"/>
+          <path d="M10 20L12 18V22L10 20Z" fill="white" opacity="0.8"/>
+          <path d="M30 20L28 18V22L30 20Z" fill="white" opacity="0.8"/>
+        </svg>
+        <span class="logo-text">
+          <strong>TorWeb</strong>
+          <span class="logo-suffix">.pl</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-menu">
+        {navigation.map((item) => (
+          <li class="nav-item">
+            {item.submenu ? (
+              <div class="dropdown">
+                <button 
+                  class="nav-link dropdown-toggle" 
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {item.name}
+                  <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <ul class="dropdown-menu">
+                  {item.submenu.map((subitem) => (
+                    <li>
+                      <a 
+                        href={subitem.href} 
+                        class={`dropdown-link ${currentPath === subitem.href ? 'active' : ''}`}
+                      >
+                        {subitem.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a 
+                href={item.href} 
+                class={`nav-link ${currentPath === item.href ? 'active' : ''}`}
+              >
+                {item.name}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA Button -->
+      <div class="nav-cta">
+        <Button href="/kontakt" variant="primary" size="sm">
+          Darmowa wycena
+        </Button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button 
+        class="mobile-toggle" 
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="burger"></span>
+        <span class="burger"></span>
+        <span class="burger"></span>
+      </button>
+    </nav>
+  </Container>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobilne">
+    <ul class="mobile-nav">
+      {navigation.map((item) => (
+        <li class="mobile-nav-item">
+          {item.submenu ? (
+            <>
+              <button class="mobile-nav-link mobile-dropdown-toggle">
+                {item.name}
+                <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="mobile-submenu">
+                {item.submenu.map((subitem) => (
+                  <li>
+                    <a 
+                      href={subitem.href} 
+                      class={`mobile-submenu-link ${currentPath === subitem.href ? 'active' : ''}`}
+                    >
+                      {subitem.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <a 
+              href={item.href} 
+              class={`mobile-nav-link ${currentPath === item.href ? 'active' : ''}`}
+            >
+              {item.name}
+            </a>
+          )}
+        </li>
+      ))}
+      <li class="mobile-nav-item mobile-cta">
+        <Button href="/kontakt" variant="primary" size="md" fullWidth>
+          Darmowa wycena
+        </Button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-gray-200);
+    transition: all var(--transition-base);
+  }
+
+  .header.scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+    position: relative;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .logo:hover {
+    transform: translateX(2px);
+  }
+
+  .logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-primary);
+  }
+
+  .logo-text {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .logo-suffix {
+    color: var(--color-gray-500);
+    font-weight: 400;
+  }
+
+  /* Navigation Menu */
+  .nav-menu {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .nav-menu {
+      display: flex;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--color-gray-700);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+    background: var(--color-gray-100);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+    background: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .dropdown:hover .dropdown-icon,
+  .dropdown-toggle[aria-expanded="true"] .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    min-width: 220px;
+    padding: 0.5rem;
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-fast);
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.625rem 0.875rem;
+    color: var(--color-gray-700);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    font-size: 0.925rem;
+  }
+
+  .dropdown-link:hover {
+    color: var(--color-primary);
+    background: var(--color-gray-100);
+  }
+
+  .dropdown-link.active {
+    color: var(--color-primary);
+    background: var(--color-primary);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.15));
+    color: var(--color-primary-dark);
+    font-weight: 500;
+  }
+
+  /* CTA */
+  .nav-cta {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .nav-cta {
+      display: block;
+    }
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 51;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  .burger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-gray-700);
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .burger:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .burger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle[aria-expanded="true"] .burger:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 49;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+  }
+
+  @media (max-width: 1023px) {
+    .mobile-menu {
+      display: block;
+    }
+  }
+
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+
+  .mobile-nav {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .mobile-nav-item:last-child {
+    border-bottom: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    color: var(--color-gray-700);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: var(--color-primary);
+  }
+
+  .mobile-submenu {
+    list-style: none;
+    padding: 0 0 1rem 2rem;
+    margin: 0;
+    display: none;
+  }
+
+  .mobile-submenu.active {
+    display: block;
+  }
+
+  .mobile-submenu-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    font-size: 0.925rem;
+    transition: color var(--transition-fast);
+  }
+
+  .mobile-submenu-link:hover,
+  .mobile-submenu-link.active {
+    color: var(--color-primary);
+  }
+
+  .mobile-dropdown-toggle .dropdown-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .mobile-dropdown-toggle.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Sticky header on scroll
+  const header = document.getElementById('header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const body = document.body;
+
+  mobileToggle?.addEventListener('click', () => {
+    const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
+    
+    mobileToggle.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    mobileMenu?.classList.toggle('active');
+    body.style.overflow = !isOpen ? 'hidden' : '';
+  });
+
+  // Mobile dropdown toggles
+  const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+  
+  mobileDropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const submenu = toggle.nextElementSibling;
+      const isOpen = toggle.classList.contains('active');
+      
+      // Close other dropdowns
+      mobileDropdownToggles.forEach(otherToggle => {
+        if (otherToggle !== toggle) {
+          otherToggle.classList.remove('active');
+          otherToggle.nextElementSibling?.classList.remove('active');
+        }
+      });
+      
+      // Toggle current dropdown
+      toggle.classList.toggle('active');
+      submenu?.classList.toggle('active');
+    });
+  });
+
+  // Close mobile menu on link click
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-toggle)');
+  
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileToggle?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.remove('active');
+      body.style.overflow = '';
+    });
+  });
+</script>
