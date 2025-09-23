@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/ui/Container.astro';
 import Button from '../components/ui/Button.astro';
@@ -273,6 +274,222 @@ const stats = [
     </Container>
   </section>
 
+  <!-- Why Choose Us Section -->
+  <section class="why-us section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Dlaczego <span class="gradient-text">95% klientów</span> nas poleca?
+        </h2>
+        <p class="section-description">
+          Stawiamy na jakość, terminowość i długoterminowe relacje
+        </p>
+      </div>
+      
+      <div class="why-us-grid">
+        <div class="why-us-card" data-animate>
+          <div class="why-us-number">01</div>
+          <h3>Bez ukrytych kosztów</h3>
+          <p>Otrzymujesz kompletną wycenę na start. Hosting, domena, SSL, konfiguracja - wszystko wliczone w cenę. Żadnych niespodzianek.</p>
+        </div>
+        
+        <div class="why-us-card" data-animate>
+          <div class="why-us-number">02</div>
+          <h3>Kod na własność</h3>
+          <p>Po zakończeniu projektu otrzymujesz pełne prawa do kodu źródłowego. Możesz go dowolnie modyfikować lub przenieść gdzie chcesz.</p>
+        </div>
+        
+        <div class="why-us-card" data-animate>
+          <div class="why-us-number">03</div>
+          <h3>Gwarancja 12 miesięcy</h3>
+          <p>Dajemy rok gwarancji na wykonaną pracę. Jeśli coś nie działa - naprawiamy za darmo. Bez dyskusji.</p>
+        </div>
+        
+        <div class="why-us-card" data-animate>
+          <div class="why-us-number">04</div>
+          <h3>Szkolenie w cenie</h3>
+          <p>Nauczymy Cię obsługi panelu administracyjnego. Otrzymasz też video-tutorial i dokumentację w języku polskim.</p>
+        </div>
+        
+        <div class="why-us-card" data-animate>
+          <div class="why-us-number">05</div>
+          <h3>Wsparcie po wdrożeniu</h3>
+          <p>Nie zostawiamy Cię po publikacji strony. Pierwsze 3 miesiące drobnych poprawek gratis. Potem dostępne pakiety wsparcia.</p>
+        </div>
+        
+        <div class="why-us-card" data-animate>
+          <div class="why-us-number">06</div>
+          <h3>Lokalna firma</h3>
+          <p>Jesteśmy z Torunia. Możesz przyjść do biura, podpisać umowę osobiście. W razie problemów - jesteśmy na miejscu.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Technologies Section -->
+  <section class="technologies section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Używamy <span class="gradient-text">najlepszych technologii</span>
+        </h2>
+        <p class="section-description">
+          Stawiamy na sprawdzone, nowoczesne rozwiązania
+        </p>
+      </div>
+      
+      <div class="tech-categories">
+        <div class="tech-category" data-animate>
+          <h3 class="tech-category-title">Frontend</h3>
+          <div class="tech-logos">
+            <div class="tech-item">
+              <div class="tech-icon">⚛️</div>
+              <span>React</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">▲</div>
+              <span>Next.js</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🚀</div>
+              <span>Astro</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">💚</div>
+              <span>Vue.js</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tech-category" data-animate>
+          <h3 class="tech-category-title">Backend</h3>
+          <div class="tech-logos">
+            <div class="tech-item">
+              <div class="tech-icon">🟢</div>
+              <span>Node.js</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🐍</div>
+              <span>Python</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🐘</div>
+              <span>PHP</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">💎</div>
+              <span>Ruby</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tech-category" data-animate>
+          <h3 class="tech-category-title">E-commerce</h3>
+          <div class="tech-logos">
+            <div class="tech-item">
+              <div class="tech-icon">🛒</div>
+              <span>WooCommerce</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🏪</div>
+              <span>PrestaShop</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🛍️</div>
+              <span>Shopify</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">📦</div>
+              <span>Magento</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tech-category" data-animate>
+          <h3 class="tech-category-title">Infrastruktura</h3>
+          <div class="tech-logos">
+            <div class="tech-item">
+              <div class="tech-icon">☁️</div>
+              <span>AWS</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🐳</div>
+              <span>Docker</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">📊</div>
+              <span>Google Cloud</span>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🔷</div>
+              <span>Cloudflare</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tech-description">
+        <p>
+          Wybieramy technologię <strong>dopasowaną do projektu</strong>. Dla prostych stron - Astro lub WordPress. 
+          Dla sklepów - WooCommerce lub PrestaShop. Dla aplikacji - React z Node.js. 
+          Zawsze stawiamy na <strong>wydajność, bezpieczeństwo i łatwość rozwoju</strong>.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Guarantees Section -->
+  <section class="guarantees section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Nasze <span class="gradient-text">gwarancje</span> dla Ciebie
+        </h2>
+        <p class="section-description">
+          Zapewniamy najwyższą jakość na każdym etapie współpracy
+        </p>
+      </div>
+      
+      <div class="guarantees-grid">
+        <div class="guarantee-card" data-animate>
+          <div class="guarantee-icon">⏱️</div>
+          <h3>Terminowość 100%</h3>
+          <p>Nigdy nie przekroczyliśmy terminu realizacji. Jeśli się spóźnimy - zwracamy 50% kosztów.</p>
+        </div>
+        
+        <div class="guarantee-card" data-animate>
+          <div class="guarantee-icon">🚀</div>
+          <h3>PageSpeed 90+</h3>
+          <p>Gwarantujemy wynik min. 90/100 w Google PageSpeed. Jeśli nie osiągniemy - poprawiamy za darmo.</p>
+        </div>
+        
+        <div class="guarantee-card" data-animate>
+          <div class="guarantee-icon">🔍</div>
+          <h3>SEO w standardzie</h3>
+          <p>Każda strona zoptymalizowana pod SEO. Meta tagi, Schema.org, sitemap, robots.txt - wszystko w cenie.</p>
+        </div>
+        
+        <div class="guarantee-card" data-animate>
+          <div class="guarantee-icon">📱</div>
+          <h3>100% responsywność</h3>
+          <p>Testujemy na wszystkich urządzeniach. iPhone, Android, tablet, desktop - wszędzie działa idealnie.</p>
+        </div>
+        
+        <div class="guarantee-card" data-animate>
+          <div class="guarantee-icon">🔐</div>
+          <h3>Bezpieczeństwo</h3>
+          <p>SSL, zabezpieczenia przed atakami, regularne backupy. RODO, cookies, polityka prywatności w cenie.</p>
+        </div>
+        
+        <div class="guarantee-card" data-animate>
+          <div class="guarantee-icon">💬</div>
+          <h3>Wsparcie 24/7</h3>
+          <p>Telefon, email, WhatsApp. Odpowiadamy maksymalnie w 24h. W sytuacjach krytycznych - natychmiast.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
   <!-- Testimonials Section -->
   <section class="testimonials section bg-light">
     <Container>
@@ -302,6 +519,132 @@ const stats = [
             </div>
           </Card>
         ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq section">
+    <Container size="lg">
+      <div class="section-header">
+        <h2 class="section-title">
+          Często zadawane <span class="gradient-text">pytania</span>
+        </h2>
+        <p class="section-description">
+          Odpowiedzi na najważniejsze pytania o tworzenie stron internetowych
+        </p>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-column">
+          <details class="faq-item">
+            <summary>Ile kosztuje strona internetowa?</summary>
+            <p>Strona wizytówka od 1990 zł, firmowa z CMS od 3990 zł, sklep internetowy od 4990 zł. 
+            Każda wycena jest indywidualna i zawiera wszystko - projekt, wykonanie, hosting na rok, domenę i SSL.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Jak długo trwa realizacja?</summary>
+            <p>Strona wizytówka 7 dni, strona firmowa 14 dni, sklep internetowy 21-30 dni. 
+            Terminy są gwarantowane - jeśli się spóźnimy, zwracamy 50% wartości zamówienia.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Czy będę mógł sam edytować treści?</summary>
+            <p>Tak! Każda strona ma intuicyjny panel CMS. Przeszkolimy Cię z obsługi, 
+            dostarczymy video-tutorial i dokumentację po polsku. Edycja jest prosta jak w Wordzie.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Co z pozycjonowaniem w Google?</summary>
+            <p>Każda strona jest zoptymalizowana pod SEO już w cenie. Meta tagi, Schema.org, 
+            sitemap, szybkość ładowania. 80% naszych stron jest w TOP 10 na lokalne frazy.</p>
+          </details>
+        </div>
+        
+        <div class="faq-column">
+          <details class="faq-item">
+            <summary>Czy oferujecie wsparcie po wdrożeniu?</summary>
+            <p>Pierwsze 3 miesiące drobnych poprawek gratis. Potem pakiety wsparcia od 199 zł/msc. 
+            Dodatkowo rok gwarancji na wykonaną pracę - naprawiamy błędy za darmo.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Jakie technologie wykorzystujecie?</summary>
+            <p>Dobieramy technologię do projektu. WordPress dla prostych stron, WooCommerce dla sklepów, 
+            React/Next.js dla aplikacji. Zawsze najnowsze, bezpieczne i wydajne rozwiązania.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Czy mogę zobaczyć Wasze realizacje?</summary>
+            <p>Oczywiście! Mamy ponad 50 wdrożonych projektów. Na spotkaniu pokażemy portfolio, 
+            case studies i wyniki w Google. Możemy też pokazać panele administracyjne.</p>
+          </details>
+          
+          <details class="faq-item">
+            <summary>Co jeśli strona mi się nie spodoba?</summary>
+            <p>Przed kodowaniem pokazujemy projekt graficzny. Masz 3 rundy poprawek w cenie. 
+            Pracujemy aż do pełnej satysfakcji. 98% klientów akceptuje projekt za pierwszym razem.</p>
+          </details>
+        </div>
+      </div>
+      
+      <div class="faq-cta">
+        <p>Masz inne pytania?</p>
+        <Button href="/kontakt" variant="primary">
+          Zapytaj nas o wszystko
+        </Button>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Local SEO Section -->
+  <section class="local-seo section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Tworzymy strony dla firm z <span class="gradient-text">Torunia i okolic</span>
+        </h2>
+        <p class="section-description">
+          Działamy lokalnie, ale realizujemy projekty dla klientów z całej Polski
+        </p>
+      </div>
+      
+      <div class="areas-grid">
+        <div class="area-card" data-animate>
+          <h3>🏛️ Toruń</h3>
+          <p>Nasze miasto! Tu mamy biuro przy ul. Przykładowej. Możemy spotkać się osobiście, 
+          omówić projekt przy kawie. <strong>30+ realizacji</strong> dla toruńskich firm.</p>
+        </div>
+        
+        <div class="area-card" data-animate>
+          <h3>🌆 Bydgoszcz</h3>
+          <p>20 minut jazdy z Torunia. Regularnie realizujemy projekty dla bydgoskich przedsiębiorców. 
+          <strong>15+ wdrożonych stron</strong> dla firm z Bydgoszczy.</p>
+        </div>
+        
+        <div class="area-card" data-animate>
+          <h3>🏭 Włocławek</h3>
+          <p>Obsługujemy także firmy z Włocławka i powiatu włocławskiego. 
+          Dojazd na spotkanie bez dodatkowych kosztów.</p>
+        </div>
+        
+        <div class="area-card" data-animate>
+          <h3>🌍 Cała Polska</h3>
+          <p>Dzięki sprawnej komunikacji online realizujemy projekty dla firm z całego kraju. 
+          Warszawa, Kraków, Gdańsk - wszędzie tam mamy zadowolonych klientów.</p>
+        </div>
+      </div>
+      
+      <div class="local-benefits">
+        <h3>Dlaczego warto wybrać lokalną agencję?</h3>
+        <ul>
+          <li>✓ Spotkania osobiste - lepsze zrozumienie potrzeb</li>
+          <li>✓ Szybka reakcja - jesteśmy na miejscu gdy nas potrzebujesz</li>
+          <li>✓ Polska umowa i faktura - pełna transparentność</li>
+          <li>✓ Wsparcie lokalne - znamy rynek i konkurencję</li>
+          <li>✓ Budowanie relacji - nie jesteś tylko numerem w systemie</li>
+        </ul>
       </div>
     </Container>
   </section>
@@ -778,6 +1121,336 @@ const stats = [
     font-size: var(--text-sm);
   }
 
+  /* Why Us Section */
+  .why-us {
+    padding: var(--space-3xl) 0;
+  }
+
+  .why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .why-us-card {
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-200);
+    position: relative;
+    transition: all var(--transition-base);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .why-us-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .why-us-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .why-us-number {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+  }
+
+  .why-us-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .why-us-card p {
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  /* Technologies Section */
+  .technologies {
+    padding: var(--space-3xl) 0;
+    background: var(--color-light);
+  }
+
+  .tech-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .tech-category {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .tech-category.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tech-category-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  .tech-logos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: white;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+  }
+
+  .tech-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .tech-icon {
+    font-size: 2rem;
+  }
+
+  .tech-item span {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-gray-700);
+  }
+
+  .tech-description {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+  }
+
+  .tech-description p {
+    color: var(--color-gray-600);
+    line-height: 1.7;
+  }
+
+  /* Guarantees Section */
+  .guarantees {
+    padding: var(--space-3xl) 0;
+  }
+
+  .guarantees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .guarantee-card {
+    text-align: center;
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--color-gray-200);
+    transition: all var(--transition-base);
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  .guarantee-card.animate-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .guarantee-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .guarantee-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .guarantee-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-dark);
+  }
+
+  .guarantee-card p {
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  /* FAQ Section */
+  .faq {
+    padding: var(--space-3xl) 0;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .faq-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .faq-item[open] {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+
+  .faq-item summary {
+    padding: var(--space-lg);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-base);
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: var(--text-xl);
+    color: var(--color-primary);
+    transition: transform var(--transition-fast);
+  }
+
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    padding: 0 var(--space-lg) var(--space-lg);
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  .faq-cta {
+    text-align: center;
+    padding-top: var(--space-xl);
+  }
+
+  .faq-cta p {
+    font-size: var(--text-lg);
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Local SEO Section */
+  .local-seo {
+    padding: var(--space-3xl) 0;
+    background: var(--color-light);
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .area-card {
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .area-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .area-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .area-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .area-card p {
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  .local-benefits {
+    background: white;
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .local-benefits h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .local-benefits ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    padding: 0;
+  }
+
+  .local-benefits li {
+    color: var(--color-gray-700);
+    line-height: 1.6;
+    padding: var(--space-sm);
+    background: var(--color-light);
+    border-radius: var(--radius-md);
+  }
+
   /* CTA Section */
   .cta {
     padding: var(--space-3xl) 0;
@@ -854,6 +1527,46 @@ const stats = [
 
     .cta-buttons {
       flex-direction: column;
+    }
+
+    /* New sections responsive */
+    .why-us-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-categories {
+      grid-template-columns: 1fr;
+    }
+
+    .guarantees-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .areas-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .local-benefits ul {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tech-logos {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .faq-item summary {
+      font-size: var(--text-sm);
     }
   }
 

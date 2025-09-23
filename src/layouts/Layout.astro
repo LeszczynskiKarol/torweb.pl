@@ -50,17 +50,15 @@ const {
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   
-  <!-- Preload critical resources -->
-  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-  
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
+  <script is:inline>
+    // Deklaracja typów dla TypeScript
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){window.dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 </head>
 <body>
   <Header />
@@ -95,6 +93,7 @@ const {
       --color-gray-300: #d1d5db;
       --color-gray-200: #e5e7eb;
       --color-gray-100: #f3f4f6;
+      --color-gray-50: #f9fafb;
       --color-light: #f8fafc;
       --color-white: #ffffff;
       
@@ -336,7 +335,7 @@ const {
     }
   </style>
   
-  <script>
+  <script is:inline>
     // Animacje przy scrollu
     const observerOptions = {
       threshold: 0.1,

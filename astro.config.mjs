@@ -1,26 +1,27 @@
 // astro.config.mjs
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import compress from "astro-compress";
-import image from "@astrojs/image";
 
+// https://astro.build/config
 export default defineConfig({
   site: "https://torweb.pl",
   integrations: [
-    sitemap(),
-    compress({
-      css: true,
-      html: {
-        removeAttributeQuotes: false,
-      },
-      img: false,
-      js: true,
-      svg: false,
-    }),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
+    sitemap({
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date(),
     }),
   ],
+  image: {
+    // Wbudowane wsparcie dla obrazów w Astro 3+
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
+  compressHTML: true,
+  build: {
+    inlineStylesheets: "auto",
+  },
   vite: {
     ssr: {
       external: ["svgo"],

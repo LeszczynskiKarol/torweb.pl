@@ -1,0 +1,1032 @@
+---
+// src/pages/uslugi/sklepy-internetowe.astro
+
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/ui/Container.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+import Badge from '../../components/ui/Badge.astro';
+
+const features = [
+  {
+    icon: '💳',
+    title: 'Integracje płatności',
+    description: 'Stripe, PayPal, Przelewy24, PayU, BLIK. Wszystkie popularne metody płatności w jednym miejscu.'
+  },
+  {
+    icon: '📦',
+    title: 'Zarządzanie magazynem',
+    description: 'Automatyczna kontrola stanów magazynowych, powiadomienia o brakach, zarządzanie dostawcami.'
+  },
+  {
+    icon: '🚚',
+    title: 'Integracje kurierskie',
+    description: 'InPost, DPD, DHL, FedEx, Poczta Polska. Automatyczne etykiety i śledzenie przesyłek.'
+  },
+  {
+    icon: '📊',
+    title: 'Analityka sprzedaży',
+    description: 'Szczegółowe raporty, śledzenie konwersji, analiza zachowań klientów, integracja z Google Analytics.'
+  },
+  {
+    icon: '🔄',
+    title: 'Automatyzacje',
+    description: 'Automatyczne faktury, maile transakcyjne, powiadomienia o statusie zamówienia, remarketing.'
+  },
+  {
+    icon: '🌍',
+    title: 'Wielojęzyczność',
+    description: 'Obsługa wielu języków, walut i stref podatkowych. Sprzedaż międzynarodowa bez barier.'
+  }
+];
+
+const platforms = [
+  {
+    name: 'WooCommerce',
+    description: 'Najpopularniejsza platforma e-commerce na świecie. Idealna dla małych i średnich sklepów.',
+    pros: ['Darmowa licencja', 'Tysiące wtyczek', 'Elastyczność', 'Duża społeczność'],
+    best_for: 'Sklepy do 10 000 produktów'
+  },
+  {
+    name: 'PrestaShop',
+    description: 'Profesjonalna platforma dedykowana dla e-commerce. Bogata w funkcje.',
+    pros: ['Zaawansowane funkcje', 'Multi-store', 'B2B ready', 'SEO friendly'],
+    best_for: 'Średnie i duże sklepy'
+  },
+  {
+    name: 'Własne rozwiązania',
+    description: 'Sklep szyty na miarę w React/Next.js z własnym backendem Node.js.',
+    pros: ['100% personalizacji', 'Najwyższa wydajność', 'Brak ograniczeń', 'Własność kodu'],
+    best_for: 'Duże projekty i marketplace'
+  }
+];
+
+const process = [
+  {
+    title: 'Analiza biznesu',
+    description: 'Analizujemy Twój model biznesowy, konkurencję, grupę docelową i cele sprzedażowe.',
+    duration: '2-3 dni'
+  },
+  {
+    title: 'Projekt UX/UI',
+    description: 'Projektujemy ścieżki zakupowe, wireframe\'y i kompletny design sklepu.',
+    duration: '5-7 dni'
+  },
+  {
+    title: 'Rozwój sklepu',
+    description: 'Programujemy sklep, integrujemy płatności, kurierów i systemy zewnętrzne.',
+    duration: '14-30 dni'
+  },
+  {
+    title: 'Testy i optymalizacja',
+    description: 'Testujemy proces zakupowy, wydajność, bezpieczeństwo i SEO.',
+    duration: '3-5 dni'
+  },
+  {
+    title: 'Wdrożenie',
+    description: 'Publikacja sklepu, konfiguracja analytics, szkolenie z obsługi.',
+    duration: '2-3 dni'
+  }
+];
+
+const pricing = [
+  {
+    name: 'Start',
+    price: '4 990',
+    description: 'Prosty sklep na WooCommerce',
+    features: [
+      'Do 100 produktów',
+      'Szablon premium + customizacja',
+      'Płatności Przelewy24',
+      'Integracja InPost',
+      'Responsywny design',
+      'SSL + hosting (1 rok)',
+      'Podstawowe SEO',
+      '2 miesiące wsparcia'
+    ],
+    cta: 'Zamów sklep Start'
+  },
+  {
+    name: 'Biznes',
+    price: '9 990',
+    description: 'Profesjonalny sklep z integracjami',
+    popular: true,
+    features: [
+      'Do 1000 produktów',
+      'Indywidualny projekt',
+      'Wszystkie płatności',
+      'Wszystkie kurierzy',
+      'Allegro + Amazon',
+      'Fakturowanie automatyczne',
+      'Zaawansowane SEO',
+      'Newsletter + marketing',
+      '6 miesięcy wsparcia'
+    ],
+    cta: 'Zamów sklep Biznes'
+  },
+  {
+    name: 'Enterprise',
+    price: 'Indywidualnie',
+    description: 'Dedykowane rozwiązanie',
+    features: [
+      'Nieograniczone produkty',
+      'Własna platforma',
+      'API & integracje',
+      'Multi-store',
+      'B2B + B2C',
+      'Hurtownie + dropshipping',
+      'Dedykowany serwer',
+      'SLA 99.9%',
+      '12 miesięcy wsparcia'
+    ],
+    cta: 'Zapytaj o wycenę'
+  }
+];
+---
+
+<Layout
+  title="Sklepy internetowe Toruń - WooCommerce, PrestaShop, E-commerce"
+  description="Tworzymy sklepy internetowe, które sprzedają. ✅ WooCommerce ✅ PrestaShop ✅ Własne rozwiązania ✅ Integracje płatności i kurierów. Sprawdź ofertę!"
+  keywords="sklepy internetowe toruń, e-commerce toruń, woocommerce toruń, prestashop toruń, tworzenie sklepów internetowych"
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <Container>
+      <div class="hero-content">
+        <Badge variant="primary" class="hero-badge">
+          🛒 Sklepy internetowe
+        </Badge>
+        
+        <h1 class="hero-title">
+          Tworzymy <span class="gradient-text">sklepy internetowe</span>,
+          które naprawdę sprzedają
+        </h1>
+        
+        <p class="hero-description">
+          Profesjonalne sklepy e-commerce z kompletnym wdrożeniem. Od projektu, przez integracje 
+          płatności i kurierów, po marketing i analitykę. <strong>Wszystko, czego potrzebujesz do sprzedaży online.</strong>
+        </p>
+        
+        <div class="hero-features">
+          <div class="hero-feature">
+            <svg class="feature-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 2L12.39 6.36L18.18 7.18L14.09 11.16L15.09 16.92L10 14.13L4.91 16.92L5.91 11.16L1.82 7.18L7.61 6.36L10 1Z"/>
+            </svg>
+            <span>Konwersja 3-5%</span>
+          </div>
+          <div class="hero-feature">
+            <svg class="feature-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M13 7H7V9H13V7ZM13 11H7V13H13V11ZM17 3H3C1.9 3 1 3.9 1 5V15C1 16.1 1.9 17 3 17H17C18.1 17 19 16.1 19 15V5C19 3.9 18.1 3 17 3Z"/>
+            </svg>
+            <span>Wszystkie płatności</span>
+          </div>
+          <div class="hero-feature">
+            <svg class="feature-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M3 3H17L15 9H5L3 3ZM5 11H15L14 15H6L5 11Z"/>
+            </svg>
+            <span>Integracje kurierskie</span>
+          </div>
+        </div>
+        
+        <div class="hero-cta">
+          <Button href="/kontakt" variant="primary" size="lg">
+            Zamów wycenę sklepu
+          </Button>
+          <Button href="#realizacje" variant="outline" size="lg">
+            Zobacz realizacje
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Kompletny <span class="gradient-text">sklep internetowy</span>
+        </h2>
+        <p class="section-description">
+          Dostarczamy wszystko, czego potrzebujesz do skutecznej sprzedaży online
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature) => (
+          <div class="feature-card" data-animate>
+            <div class="feature-icon">{feature.icon}</div>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-description">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Platforms Section -->
+  <section class="platforms section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Wybierz <span class="gradient-text">platformę e-commerce</span>
+        </h2>
+        <p class="section-description">
+          Dobieramy technologię do Twoich potrzeb i skali biznesu
+        </p>
+      </div>
+      
+      <div class="platforms-grid">
+        {platforms.map((platform) => (
+          <Card class="platform-card">
+            <h3 class="platform-name">{platform.name}</h3>
+            <p class="platform-description">{platform.description}</p>
+            
+            <div class="platform-pros">
+              {platform.pros.map((pro) => (
+                <div class="pro-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{pro}</span>
+                </div>
+              ))}
+            </div>
+            
+            <div class="platform-best">
+              <strong>Najlepszy dla:</strong>
+              <span>{platform.best_for}</span>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Proces tworzenia <span class="gradient-text">sklepu</span>
+        </h2>
+        <p class="section-description">
+          Od analizy po wdrożenie - kompleksowa realizacja w 21-45 dni
+        </p>
+      </div>
+      
+      <div class="process-timeline">
+        {process.map((step, index) => (
+          <div class="process-step" data-animate>
+            <div class="step-number">{String(index + 1).padStart(2, '0')}</div>
+            <div class="step-content">
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-description">{step.description}</p>
+              <span class="step-duration">{step.duration}</span>
+            </div>
+            {index < process.length - 1 && <div class="step-connector"></div>}
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- What We Deliver Section -->
+  <section class="delivery section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Co dokładnie <span class="gradient-text">otrzymujesz?</span>
+        </h2>
+        <p class="section-description">
+          Kompletny sklep internetowy gotowy do sprzedaży
+        </p>
+      </div>
+      
+      <div class="delivery-grid">
+        <Card class="delivery-card">
+          <h3>🎨 Design & UX</h3>
+          <ul>
+            <li>Indywidualny projekt graficzny</li>
+            <li>Optymalizacja ścieżek zakupowych</li>
+            <li>Responsywność na wszystkich urządzeniach</li>
+            <li>Testy A/B i optymalizacja konwersji</li>
+          </ul>
+        </Card>
+        
+        <Card class="delivery-card">
+          <h3>⚙️ Funkcjonalności</h3>
+          <ul>
+            <li>Panel administracyjny</li>
+            <li>Zarządzanie produktami i kategoriami</li>
+            <li>System rabatów i promocji</li>
+            <li>Program lojalnościowy</li>
+          </ul>
+        </Card>
+        
+        <Card class="delivery-card">
+          <h3>🔌 Integracje</h3>
+          <ul>
+            <li>Wszystkie metody płatności</li>
+            <li>Kurierzy i paczkomaty</li>
+            <li>Allegro, Amazon, Ceneo</li>
+            <li>System fakturowania</li>
+          </ul>
+        </Card>
+        
+        <Card class="delivery-card">
+          <h3>📈 Marketing</h3>
+          <ul>
+            <li>Optymalizacja SEO</li>
+            <li>Google Analytics & Ads</li>
+            <li>Facebook Pixel</li>
+            <li>Newsletter i automatyzacje</li>
+          </ul>
+        </Card>
+        
+        <Card class="delivery-card">
+          <h3>🔒 Bezpieczeństwo</h3>
+          <ul>
+            <li>Certyfikat SSL</li>
+            <li>Zgodność z RODO</li>
+            <li>Backupy automatyczne</li>
+            <li>Ochrona przed atakami</li>
+          </ul>
+        </Card>
+        
+        <Card class="delivery-card">
+          <h3>🚀 Wsparcie</h3>
+          <ul>
+            <li>Szkolenie z obsługi</li>
+            <li>Dokumentacja</li>
+            <li>Wsparcie techniczne</li>
+            <li>Aktualizacje i rozwój</li>
+          </ul>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Przejrzyste <span class="gradient-text">cenniki</span>
+        </h2>
+        <p class="section-description">
+          Wybierz pakiet dopasowany do Twojego biznesu
+        </p>
+      </div>
+      
+      <div class="pricing-grid">
+        {pricing.map((plan) => (
+          <Card class={`pricing-card ${plan.popular ? 'popular' : ''}`}>
+            {plan.popular && <Badge variant="primary" class="popular-badge">Najpopularniejszy</Badge>}
+            <h3 class="plan-name">{plan.name}</h3>
+            <div class="plan-price">
+              {plan.price === 'Indywidualnie' ? (
+                <span class="price-custom">{plan.price}</span>
+              ) : (
+                <>
+                  <span class="price-value">{plan.price}</span>
+                  <span class="price-currency">zł netto</span>
+                </>
+              )}
+            </div>
+            <p class="plan-description">{plan.description}</p>
+            
+            <ul class="plan-features">
+              {plan.features.map((feature) => (
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            
+            <Button 
+              href="/kontakt" 
+              variant={plan.popular ? 'primary' : 'outline'} 
+              fullWidth
+            >
+              {plan.cta}
+            </Button>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq section">
+    <Container size="md">
+      <div class="section-header">
+        <h2 class="section-title">
+          Często zadawane <span class="gradient-text">pytania</span>
+        </h2>
+      </div>
+      
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Ile trwa stworzenie sklepu internetowego?</summary>
+          <p>Czas realizacji zależy od złożoności projektu. Prosty sklep na WooCommerce - 14-21 dni. 
+          Zaawansowany sklep z integracjami - 30-45 dni. Dedykowane rozwiązanie - 45-60 dni.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>Czy mogę sam zarządzać produktami?</summary>
+          <p>Oczywiście! Każdy sklep wyposażony jest w intuicyjny panel administracyjny. 
+          Przeprowadzamy szkolenie z obsługi i dostarczamy dokumentację.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>Jakie koszty miesięczne powinienem przewidzieć?</summary>
+          <p>Hosting: 50-200 zł/msc (zależnie od ruchu), Domena: 60 zł/rok, 
+          Certyfikat SSL: darmowy lub 200-500 zł/rok, Wsparcie techniczne: opcjonalnie 200-500 zł/msc.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>Czy sklep będzie zgodny z przepisami?</summary>
+          <p>Tak, dbamy o pełną zgodność z prawem. Przygotowujemy regulamin, politykę prywatności, 
+          klauzule RODO, informacje o cookies. Sklep spełnia wszystkie wymogi prawne.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>Co z integracją z moim systemem magazynowym?</summary>
+          <p>Integrujemy sklepy z popularnymi systemami: Subiekt, Comarch, SAP, BaseLinker. 
+          Możemy też stworzyć dedykowaną integrację przez API.</p>
+        </details>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <Container>
+      <div class="cta-content">
+        <h2 class="cta-title">
+          Gotowy na własny sklep internetowy?
+        </h2>
+        <p class="cta-description">
+          Skontaktuj się z nami i otrzymaj darmową konsultację oraz wycenę.
+          Pomożemy Ci wybrać najlepsze rozwiązanie dla Twojego biznesu.
+        </p>
+        <div class="cta-buttons">
+          <Button href="/kontakt" variant="white" size="lg">
+            Zamów darmową wycenę
+          </Button>
+          <a href="tel:+48509370772" class="cta-phone">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 3C2 2.44772 2.44772 2 3 2H6.15287C6.64171 2 7.0589 2.35341 7.13927 2.8356L7.87858 7.27147C7.95075 7.70451 7.73206 8.13397 7.3394 8.3303L5.79126 9.10437C6.90756 11.8783 9.12168 14.0924 11.8956 15.2087L12.6697 13.6606C12.866 13.2679 13.2955 13.0492 13.7285 13.1214L18.1644 13.8607C18.6466 13.9411 19 14.3583 19 14.8471V18C19 18.5523 18.5523 19 18 19H16C8.26801 19 2 12.732 2 5V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            +48 509 370 772
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+    background: linear-gradient(135deg, var(--color-light) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    animation: slideDown 0.8s ease-out;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: var(--text-xl);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--color-gray-700);
+  }
+
+  .feature-icon {
+    color: var(--color-primary);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    animation: fadeIn 1s ease-out;
+  }
+
+  /* Features Section */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .feature-card {
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .feature-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .feature-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-description {
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  /* Platforms Section */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .platform-card {
+    padding: var(--space-xl);
+    background: white;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+  }
+
+  .platform-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .platform-name {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .platform-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+  }
+
+  .platform-pros {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .pro-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+  }
+
+  .pro-item svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  .platform-best {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-gray-200);
+    font-size: var(--text-sm);
+  }
+
+  .platform-best strong {
+    color: var(--color-gray-700);
+  }
+
+  .platform-best span {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Process Section */
+  .process-timeline {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .process-step.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    z-index: 1;
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 0.5rem;
+  }
+
+  .step-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .step-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+  }
+
+  .step-duration {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+  }
+
+  .step-connector {
+    position: absolute;
+    left: 2rem;
+    top: 4.5rem;
+    width: 2px;
+    height: calc(100% + var(--space-lg));
+    background: var(--color-gray-300);
+    z-index: 0;
+  }
+
+  /* Delivery Section */
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .delivery-card {
+    padding: var(--space-lg);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .delivery-card h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .delivery-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .delivery-card li {
+    padding: 0.5rem 0;
+    color: var(--color-gray-700);
+    border-bottom: 1px solid var(--color-gray-100);
+    font-size: var(--text-sm);
+  }
+
+  .delivery-card li:last-child {
+    border-bottom: none;
+  }
+
+  /* Pricing Section */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    padding: var(--space-xl);
+    background: white;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-card.popular {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
+    transform: scale(1.05);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .plan-name {
+    font-size: var(--text-2xl);
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .plan-price {
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .price-value {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .price-currency {
+    font-size: var(--text-base);
+    color: var(--color-gray-600);
+    margin-left: 0.5rem;
+  }
+
+  .price-custom {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-gray-700);
+  }
+
+  .plan-description {
+    text-align: center;
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-sm);
+  }
+
+  .plan-features {
+    list-style: none;
+    flex: 1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: var(--text-sm);
+    color: var(--color-gray-700);
+  }
+
+  .plan-features svg {
+    flex-shrink: 0;
+    color: var(--color-success);
+    margin-top: 2px;
+  }
+
+  /* FAQ Section */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .faq-item[open] {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+
+  .faq-item summary {
+    padding: var(--space-lg);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+    transition: transform var(--transition-fast);
+  }
+
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    padding: 0 var(--space-lg) var(--space-lg);
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-description {
+    font-size: var(--text-lg);
+    opacity: 0.95;
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .cta-phone:hover {
+    transform: scale(1.05);
+  }
+
+  /* Utils */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .bg-light {
+    background: var(--color-light);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-description {
+    font-size: var(--text-lg);
+    color: var(--color-gray-600);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .process-step {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step-connector {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .pricing-card.popular {
+      transform: scale(1);
+    }
+  }
+</style>

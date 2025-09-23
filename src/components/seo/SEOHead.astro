@@ -1,0 +1,322 @@
+---
+// src/seo/SEOHead.astro
+
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const { 
+  title, 
+  description, 
+  keywords, 
+  ogImage = "/og-image.jpg",
+  canonical,
+  noindex = false
+} = Astro.props;
+
+const siteUrl = "https://torweb.pl";
+const fullTitle = `${title} | TorWeb.pl`;
+const canonicalURL = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImageURL = new URL(ogImage, siteUrl).href;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+<meta name="author" content="TorWeb.pl - Agencja Interaktywna Toruń" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Robots -->
+{noindex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+)}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="pl_PL" />
+<meta property="og:site_name" content="TorWeb.pl" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImageURL} />
+
+<!-- Additional SEO -->
+<meta name="theme-color" content="#2563eb" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="geo.region" content="PL-KP" />
+<meta name="geo.placename" content="Toruń" />
+<meta name="geo.position" content="53.0138;18.5981" />
+<meta name="ICBM" content="53.0138, 18.5981" />
+
+<!-- Schema.org LocalBusiness -->
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://torweb.pl",
+  "name": "TorWeb.pl",
+  "description": "Profesjonalne tworzenie stron internetowych w Toruniu. Strony WWW, sklepy internetowe, aplikacje webowe. 15 lat doświadczenia, ponad 50 realizacji.",
+  "url": "https://torweb.pl",
+  "telephone": "+48509370772",
+  "email": "kontakt@torweb.pl",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Toruń",
+    "addressRegion": "kujawsko-pomorskie",
+    "postalCode": "87-100",
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 53.0138,
+    "longitude": 18.5981
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Toruń"
+    },
+    {
+      "@type": "City",
+      "name": "Bydgoszcz"
+    },
+    {
+      "@type": "State",
+      "name": "Kujawsko-Pomorskie"
+    }
+  ],
+  "priceRange": "$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "17:00"
+  },
+  "image": "https://torweb.pl/images/torweb-logo.png",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://torweb.pl/images/torweb-logo.png"
+  },
+  "sameAs": [
+    "https://www.facebook.com/torwebpl",
+    "https://www.linkedin.com/company/torweb",
+    "https://github.com/torweb"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi tworzenia stron internetowych",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Strony WWW",
+          "description": "Profesjonalne strony internetowe dla firm z Torunia"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sklepy internetowe",
+          "description": "Sklepy e-commerce WooCommerce, PrestaShop, własne rozwiązania"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Aplikacje webowe",
+          "description": "Zaawansowane aplikacje webowe React, Node.js, Next.js"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "47",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+})}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://torweb.pl"
+    },
+    ...(Astro.url.pathname !== "/" ? [
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": title,
+        "item": canonicalURL
+      }
+    ] : [])
+  ]
+})}
+</script>
+
+<!-- WebSite Schema with SearchAction -->
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://torweb.pl",
+  "name": "TorWeb.pl",
+  "description": "Agencja interaktywna Toruń - tworzenie stron internetowych",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TorWeb.pl",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://torweb.pl/images/torweb-logo.png"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://torweb.pl/szukaj?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+})}
+</script>
+
+<!-- FAQPage Schema (dla strony głównej) -->
+{Astro.url.pathname === "/" && (
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje stworzenie strony internetowej w Toruniu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Koszt strony internetowej zależy od jej złożoności. Prosta strona wizytówka to koszt od 1990 zł netto, strona firmowa z CMS od 3990 zł, a zaawansowane aplikacje webowe wyceniamy indywidualnie. Oferujemy przejrzyste cenniki bez ukrytych kosztów."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa stworzenie strony WWW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Czas realizacji zależy od typu projektu. Strona wizytówka - 7 dni, strona firmowa z CMS - 14 dni, sklep internetowy - 21 dni, aplikacja webowa - od 4 tygodni. Zawsze dotrzymujemy ustalonych terminów."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy oferujecie wsparcie po wdrożeniu strony?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, każda strona objęta jest gwarancją i wsparciem technicznym. Pakiet Wizytówka - 1 miesiąc, Biznes - 3 miesiące, Premium - 6 miesięcy. Po tym okresie oferujemy pakiety wsparcia miesięcznego."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich technologiach tworzycie strony internetowe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Używamy najnowszych technologii: React, Next.js, Astro dla frontend, Node.js dla backend, WordPress/WooCommerce dla sklepów. Każdą stronę optymalizujemy pod kątem szybkości (PageSpeed 95+) i SEO."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę sam edytować treści na stronie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oczywiście! Wszystkie strony w pakietach Biznes i Premium wyposażone są w intuicyjny system CMS. Przeprowadzamy szkolenie z obsługi, a także dostarczamy dokumentację."
+      }
+    }
+  ]
+})}
+</script>
+)}
+
+<!-- Service Schema (dla podstron usług) -->
+{Astro.url.pathname.includes("/uslugi/") && (
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": title,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "TorWeb.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toruń",
+      "addressRegion": "kujawsko-pomorskie",
+      "addressCountry": "PL"
+    }
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Kujawsko-Pomorskie"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": title,
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": title,
+          "description": description
+        }
+      }
+    ]
+  }
+})}
+</script>
+)}
+
+<!-- Preconnect to external domains -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">

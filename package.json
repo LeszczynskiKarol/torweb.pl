@@ -1,14 +1,22 @@
 {
-  "name": "torweb.pl",
+  "name": "torweb-pl",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "start": "astro dev",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.10"
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^4.16.19",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "astro-compress": "^2.3.1",
+    "sharp": "^0.33.5"
   }
 }

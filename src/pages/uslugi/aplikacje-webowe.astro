@@ -1,0 +1,1201 @@
+---
+// src/pages/uslugi/aplikacje-webowe.astro
+
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/ui/Container.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+import Badge from '../../components/ui/Badge.astro';
+
+const technologies = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'React', level: 95 },
+      { name: 'Next.js', level: 90 },
+      { name: 'TypeScript', level: 85 },
+      { name: 'Vue.js', level: 80 }
+    ]
+  },
+  {
+    category: 'Backend',
+    items: [
+      { name: 'Node.js', level: 95 },
+      { name: 'Express', level: 90 },
+      { name: 'Python/Django', level: 85 },
+      { name: 'PHP/Laravel', level: 80 }
+    ]
+  },
+  {
+    category: 'Bazy danych',
+    items: [
+      { name: 'PostgreSQL', level: 90 },
+      { name: 'MongoDB', level: 85 },
+      { name: 'MySQL', level: 85 },
+      { name: 'Redis', level: 80 }
+    ]
+  },
+  {
+    category: 'Cloud & DevOps',
+    items: [
+      { name: 'AWS', level: 85 },
+      { name: 'Docker', level: 85 },
+      { name: 'Vercel', level: 90 },
+      { name: 'CI/CD', level: 85 }
+    ]
+  }
+];
+
+const appTypes = [
+  {
+    icon: '📊',
+    title: 'Systemy CRM/ERP',
+    description: 'Zarządzanie relacjami z klientami, procesami biznesowymi, sprzedażą i zasobami firmy.',
+    features: ['Zarządzanie klientami', 'Procesy sprzedażowe', 'Raporty i analizy', 'Automatyzacje']
+  },
+  {
+    icon: '👥',
+    title: 'Platformy SaaS',
+    description: 'Skalowalne aplikacje chmurowe z modelem subskrypcyjnym i multi-tenancy.',
+    features: ['Panel klienta', 'Płatności cykliczne', 'API dla deweloperów', 'Skalowalna architektura']
+  },
+  {
+    icon: '📱',
+    title: 'Progressive Web Apps',
+    description: 'Aplikacje działające jak natywne, dostępne offline, z powiadomieniami push.',
+    features: ['Tryb offline', 'Instalacja na urządzeniu', 'Push notifications', 'Synchronizacja w tle']
+  },
+  {
+    icon: '🤖',
+    title: 'Aplikacje z AI',
+    description: 'Integracje z ChatGPT, Claude, analizy predykcyjne, przetwarzanie języka naturalnego.',
+    features: ['Chatboty AI', 'Analiza sentymentu', 'Generowanie treści', 'Machine Learning']
+  },
+  {
+    icon: '📈',
+    title: 'Dashboardy analityczne',
+    description: 'Wizualizacja danych, raporty real-time, business intelligence.',
+    features: ['Wykresy interaktywne', 'Raporty PDF', 'Eksport danych', 'KPI monitoring']
+  },
+  {
+    icon: '🔐',
+    title: 'Systemy B2B',
+    description: 'Platformy dla biznesu: portale partnerskie, systemy zamówień, integracje API.',
+    features: ['Portal klienta', 'Zarządzanie zamówieniami', 'Integracje ERP', 'Role i uprawnienia']
+  }
+];
+
+const process = [
+  {
+    title: 'Analiza wymagań',
+    description: 'Dokładna analiza procesów biznesowych, wymagań funkcjonalnych i niefunkcjonalnych.',
+    deliverables: ['Specyfikacja wymagań', 'User stories', 'Mockupy', 'Estymacja']
+  },
+  {
+    title: 'Architektura',
+    description: 'Projekt architektury, wybór technologii, planowanie skalowalności i bezpieczeństwa.',
+    deliverables: ['Diagram architektury', 'Stack technologiczny', 'Plan wdrożenia', 'Dokumentacja API']
+  },
+  {
+    title: 'Development',
+    description: 'Iteracyjny rozwój w sprintach, regularne demo, ciągła integracja.',
+    deliverables: ['MVP', 'Kolejne wersje', 'Testy jednostkowe', 'Code review']
+  },
+  {
+    title: 'Testy i optymalizacja',
+    description: 'Testy funkcjonalne, wydajnościowe, bezpieczeństwa. Optymalizacja performance.',
+    deliverables: ['Raport z testów', 'Optymalizacja', 'Load testing', 'Security audit']
+  },
+  {
+    title: 'Deployment',
+    description: 'Wdrożenie produkcyjne, konfiguracja CI/CD, monitoring, dokumentacja.',
+    deliverables: ['Aplikacja produkcyjna', 'Pipeline CI/CD', 'Monitoring', 'Dokumentacja']
+  }
+];
+
+const benefits = [
+  {
+    title: 'Automatyzacja procesów',
+    description: 'Eliminujemy powtarzalne zadania, oszczędzając czas i redukując błędy.',
+    impact: 'Do 80% oszczędności czasu'
+  },
+  {
+    title: 'Skalowalność',
+    description: 'Architektura pozwalająca na wzrost bez limitów i problemów wydajnościowych.',
+    impact: 'Obsługa milionów użytkowników'
+  },
+  {
+    title: 'Integracje',
+    description: 'Łączymy wszystkie systemy w firmie w jedną, spójną platformę.',
+    impact: 'Jeden punkt dostępu do danych'
+  },
+  {
+    title: 'Analityka real-time',
+    description: 'Podejmuj decyzje na podstawie aktualnych danych i trendów.',
+    impact: 'Szybsze decyzje biznesowe'
+  },
+  {
+    title: 'Bezpieczeństwo',
+    description: 'Najwyższe standardy bezpieczeństwa, szyfrowanie, backupy.',
+    impact: 'Zgodność z RODO i ISO'
+  },
+  {
+    title: 'ROI',
+    description: 'Zwrot z inwestycji już po kilku miesiącach od wdrożenia.',
+    impact: 'Średni ROI: 300% w rok'
+  }
+];
+---
+
+<Layout
+  title="Aplikacje webowe Toruń - React, Node.js, SaaS, CRM"
+  description="Tworzymy zaawansowane aplikacje webowe dla biznesu. ✅ React & Node.js ✅ Systemy CRM/ERP ✅ Platformy SaaS ✅ Integracje AI. Sprawdź!"
+  keywords="aplikacje webowe toruń, programowanie aplikacji toruń, react toruń, node.js toruń, systemy crm toruń, platformy saas"
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <Container>
+      <div class="hero-content">
+        <Badge variant="secondary" class="hero-badge">
+          ⚡ Aplikacje webowe
+        </Badge>
+        
+        <h1 class="hero-title">
+          Zaawansowane <span class="gradient-text">aplikacje webowe</span>
+          dla wymagającego biznesu
+        </h1>
+        
+        <p class="hero-description">
+          Tworzymy skalowalne aplikacje biznesowe, platformy SaaS, systemy CRM/ERP.
+          <strong>React, Node.js, TypeScript</strong> - używamy najlepszych technologii,
+          by dostarczyć rozwiązania, które napędzają Twój biznes.
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>50+</strong>
+            <span>aplikacji wdrożonych</span>
+          </div>
+          <div class="stat">
+            <strong>100K+</strong>
+            <span>aktywnych użytkowników</span>
+          </div>
+          <div class="stat">
+            <strong>99.9%</strong>
+            <span>uptime SLA</span>
+          </div>
+        </div>
+        
+        <div class="hero-cta">
+          <Button href="/kontakt" variant="primary" size="lg">
+            Omów swój projekt
+          </Button>
+          <Button href="#technologie" variant="outline" size="lg">
+            Zobacz technologie
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- App Types Section -->
+  <section class="app-types section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Jakie <span class="gradient-text">aplikacje</span> tworzymy?
+        </h2>
+        <p class="section-description">
+          Od prostych dashboardów po złożone systemy enterprise
+        </p>
+      </div>
+      
+      <div class="apps-grid">
+        {appTypes.map((app) => (
+          <Card class="app-card">
+            <div class="app-icon">{app.icon}</div>
+            <h3 class="app-title">{app.title}</h3>
+            <p class="app-description">{app.description}</p>
+            <ul class="app-features">
+              {app.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Technologies Section -->
+  <section id="technologie" class="technologies section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Stack <span class="gradient-text">technologiczny</span>
+        </h2>
+        <p class="section-description">
+          Używamy sprawdzonych, nowoczesnych technologii
+        </p>
+      </div>
+      
+      <div class="tech-grid">
+        {technologies.map((tech) => (
+          <div class="tech-category" data-animate>
+            <h3 class="tech-title">{tech.category}</h3>
+            <div class="tech-items">
+              {tech.items.map((item) => (
+                <div class="tech-item">
+                  <div class="tech-header">
+                    <span class="tech-name">{item.name}</span>
+                    <span class="tech-level">{item.level}%</span>
+                  </div>
+                  <div class="tech-bar">
+                    <div class="tech-progress" style={`width: ${item.level}%`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Proces <span class="gradient-text">tworzenia aplikacji</span>
+        </h2>
+        <p class="section-description">
+          Agile/Scrum - elastyczne podejście z regularnym feedbackiem
+        </p>
+      </div>
+      
+      <div class="process-cards">
+        {process.map((step, index) => (
+          <div class="process-card" data-animate>
+            <div class="process-number">{String(index + 1).padStart(2, '0')}</div>
+            <div class="process-content">
+              <h3 class="process-title">{step.title}</h3>
+              <p class="process-description">{step.description}</p>
+              <div class="process-deliverables">
+                <strong>Deliverables:</strong>
+                <ul>
+                  {step.deliverables.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Korzyści z <span class="gradient-text">aplikacji webowej</span>
+        </h2>
+        <p class="section-description">
+          Realne rezultaty dla Twojego biznesu
+        </p>
+      </div>
+      
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <div class="benefit-card" data-animate>
+            <h3 class="benefit-title">{benefit.title}</h3>
+            <p class="benefit-description">{benefit.description}</p>
+            <div class="benefit-impact">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+              </svg>
+              <span>{benefit.impact}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features section bg-light">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Co <span class="gradient-text">gwarantujemy?</span>
+        </h2>
+      </div>
+      
+      <div class="features-list">
+        <div class="feature-item" data-animate>
+          <div class="feature-icon">🚀</div>
+          <div class="feature-content">
+            <h3>Wydajność i szybkość</h3>
+            <p>Optymalizowany kod, lazy loading, CDN. Aplikacje ładują się błyskawicznie nawet przy dużym ruchu.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item" data-animate>
+          <div class="feature-icon">🔒</div>
+          <div class="feature-content">
+            <h3>Bezpieczeństwo enterprise</h3>
+            <p>Szyfrowanie SSL/TLS, zabezpieczenia OWASP, regularne audyty bezpieczeństwa, zgodność z RODO.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item" data-animate>
+          <div class="feature-icon">📱</div>
+          <div class="feature-content">
+            <h3>Responsywność</h3>
+            <p>Aplikacje działają perfekcyjnie na każdym urządzeniu - desktop, tablet, smartphone.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item" data-animate>
+          <div class="feature-icon">🔄</div>
+          <div class="feature-content">
+            <h3>CI/CD Pipeline</h3>
+            <p>Automatyczne testy, deployment, rollback. Nowe funkcje wdrażamy szybko i bezpiecznie.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item" data-animate>
+          <div class="feature-icon">📊</div>
+          <div class="feature-content">
+            <h3>Monitoring 24/7</h3>
+            <p>Stały monitoring aplikacji, alerty o problemach, proaktywne rozwiązywanie incydentów.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item" data-animate>
+          <div class="feature-icon">📚</div>
+          <div class="feature-content">
+            <h3>Dokumentacja</h3>
+            <p>Kompletna dokumentacja techniczna, API, instrukcje dla użytkowników, szkolenia.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Case Study Section -->
+  <section class="case-study section">
+    <Container>
+      <div class="section-header">
+        <h2 class="section-title">
+          Przykładowa <span class="gradient-text">realizacja</span>
+        </h2>
+      </div>
+      
+      <Card class="case-card">
+        <div class="case-content">
+          <div class="case-info">
+            <Badge variant="secondary">Case Study</Badge>
+            <h3 class="case-title">System CRM dla firmy logistycznej</h3>
+            <p class="case-description">
+              Stworzyliśmy kompleksowy system CRM dla firmy transportowej obsługującej 500+ klientów miesięcznie.
+              Aplikacja zintegrowała procesy sprzedaży, obsługi klienta, planowania tras i rozliczeń.
+            </p>
+            
+            <div class="case-results">
+              <h4>Rezultaty:</h4>
+              <ul>
+                <li>↗️ 60% szybsza obsługa zleceń</li>
+                <li>📈 40% wzrost efektywności zespołu</li>
+                <li>💰 ROI po 6 miesiącach</li>
+                <li>⭐ 98% zadowolenia użytkowników</li>
+              </ul>
+            </div>
+            
+            <div class="case-tech">
+              <h4>Wykorzystane technologie:</h4>
+              <div class="tech-tags">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>PostgreSQL</span>
+                <span>Redis</span>
+                <span>Docker</span>
+                <span>AWS</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="case-visual">
+            <div class="mockup">
+              <div class="mockup-screen">
+                <div class="mockup-header"></div>
+                <div class="mockup-sidebar"></div>
+                <div class="mockup-content">
+                  <div class="mockup-chart"></div>
+                  <div class="mockup-table"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </Container>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing section bg-light">
+    <Container size="md">
+      <div class="section-header">
+        <h2 class="section-title">
+          Model <span class="gradient-text">współpracy</span>
+        </h2>
+        <p class="section-description">
+          Elastyczne modele dopasowane do Twoich potrzeb
+        </p>
+      </div>
+      
+      <div class="pricing-models">
+        <Card class="model-card">
+          <h3 class="model-title">🎯 Fixed Price</h3>
+          <p class="model-description">
+            Dla projektów z jasno określonym zakresem. Stała cena, określone terminy, gwarancja realizacji.
+          </p>
+          <div class="model-best">Idealny dla: MVP, małe aplikacje</div>
+        </Card>
+        
+        <Card class="model-card featured">
+          <h3 class="model-title">⏱️ Time & Materials</h3>
+          <p class="model-description">
+            Rozliczenie za faktycznie przepracowane godziny. Elastyczność, możliwość zmian w trakcie.
+          </p>
+          <div class="model-best">Idealny dla: Duże projekty, rozwój iteracyjny</div>
+        </Card>
+        
+        <Card class="model-card">
+          <h3 class="model-title">👥 Dedykowany zespół</h3>
+          <p class="model-description">
+            Zespół pracuje wyłącznie dla Ciebie. Pełna kontrola, długoterminowa współpraca.
+          </p>
+          <div class="model-best">Idealny dla: Stały rozwój, enterprise</div>
+        </Card>
+      </div>
+      
+      <div class="pricing-info">
+        <p>
+          <strong>Orientacyjne stawki:</strong> 150-250 zł/h netto (zależnie od technologii i złożoności)
+        </p>
+        <p>
+          <strong>Minimalne zaangażowanie:</strong> 160h dla nowych projektów
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <Container>
+      <div class="cta-content">
+        <h2 class="cta-title">
+          Masz pomysł na aplikację?
+        </h2>
+        <p class="cta-description">
+          Porozmawiajmy o Twoim projekcie. Bezpłatna konsultacja i wstępna wycena.
+          Sprawdzimy, jak technologia może rozwiązać Twoje problemy biznesowe.
+        </p>
+        <div class="cta-buttons">
+          <Button href="/kontakt" variant="white" size="lg">
+            Umów konsultację
+          </Button>
+          <a href="tel:+48509370772" class="cta-phone">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 3C2 2.44772 2.44772 2 3 2H6.15287C6.64171 2 7.0589 2.35341 7.13927 2.8356L7.87858 7.27147C7.95075 7.70451 7.73206 8.13397 7.3394 8.3303L5.79126 9.10437C6.90756 11.8783 9.12168 14.0924 11.8956 15.2087L12.6697 13.6606C12.866 13.2679 13.2955 13.0492 13.7285 13.1214L18.1644 13.8607C18.6466 13.9411 19 14.3583 19 14.8471V18C19 18.5523 18.5523 19 18 19H16C8.26801 19 2 12.732 2 5V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            +48 509 370 772
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+    background: linear-gradient(135deg, var(--color-light) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 30% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 70% 60%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 52rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    animation: slideDown 0.8s ease-out;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: var(--text-xl);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat strong {
+    display: block;
+    font-size: var(--text-3xl);
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat span {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    animation: fadeIn 1s ease-out;
+  }
+
+  /* App Types Section */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .app-card {
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+  }
+
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .app-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .app-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .app-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+
+  .app-features {
+    list-style: none;
+    padding: 0;
+  }
+
+  .app-features li {
+    padding: 0.375rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+  }
+
+  .app-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+
+  /* Technologies Section */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .tech-category {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .tech-category.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tech-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .tech-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .tech-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tech-name {
+    font-weight: 500;
+    color: var(--color-gray-700);
+  }
+
+  .tech-level {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+  }
+
+  .tech-bar {
+    height: 8px;
+    background: var(--color-gray-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+
+  .tech-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-full);
+    animation: progressBar 1.5s ease-out;
+  }
+
+  @keyframes progressBar {
+    from { width: 0; }
+  }
+
+  /* Process Section */
+  .process-cards {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+
+  .process-card {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .process-card.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .process-number {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-lg);
+  }
+
+  .process-content {
+    flex: 1;
+  }
+
+  .process-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .process-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+
+  .process-deliverables {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .process-deliverables strong {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-sm);
+  }
+
+  .process-deliverables ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+  }
+
+  .process-deliverables li {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+    border-radius: var(--radius-full);
+  }
+
+  /* Benefits Section */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .benefit-card {
+    padding: var(--space-lg);
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-200);
+    transition: all var(--transition-base);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease-out;
+  }
+
+  .benefit-card.animate-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .benefit-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .benefit-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .benefit-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-md);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .benefit-impact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  .benefit-impact svg {
+    color: var(--color-success);
+  }
+
+  /* Features Section */
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .feature-item {
+    display: flex;
+    gap: var(--space-md);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .feature-item.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .feature-icon {
+    flex-shrink: 0;
+    font-size: 2.5rem;
+  }
+
+  .feature-content h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-content p {
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  /* Case Study Section */
+  .case-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .case-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .case-info {
+    padding: var(--space-2xl);
+  }
+
+  .case-title {
+    font-size: var(--text-2xl);
+    margin: var(--space-md) 0;
+  }
+
+  .case-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-lg);
+    line-height: 1.7;
+  }
+
+  .case-results {
+    margin-bottom: var(--space-lg);
+  }
+
+  .case-results h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+    color: var(--color-gray-700);
+  }
+
+  .case-results ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .case-results li {
+    padding: 0.5rem 0;
+    font-size: var(--text-base);
+    color: var(--color-gray-700);
+  }
+
+  .case-tech h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+    color: var(--color-gray-700);
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .tech-tags span {
+    padding: 0.375rem 0.875rem;
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+  }
+
+  .case-visual {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2xl);
+  }
+
+  .mockup {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .mockup-screen {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-2xl);
+  }
+
+  .mockup-header {
+    height: 12px;
+    background: var(--color-gray-200);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .mockup-sidebar {
+    width: 30%;
+    height: 200px;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-md);
+    float: left;
+    margin-right: var(--space-md);
+  }
+
+  .mockup-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .mockup-chart {
+    height: 80px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-md);
+    opacity: 0.2;
+  }
+
+  .mockup-table {
+    height: 100px;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-md);
+  }
+
+  /* Pricing Models */
+  .pricing-models {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .model-card {
+    padding: var(--space-xl);
+    background: white;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .model-card.featured {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .model-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .model-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .model-description {
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+
+  .model-best {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-gray-200);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .pricing-info {
+    text-align: center;
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .pricing-info p {
+    margin-bottom: var(--space-sm);
+    color: var(--color-gray-700);
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    color: white;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-description {
+    font-size: var(--text-lg);
+    opacity: 0.95;
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .cta-phone:hover {
+    transform: scale(1.05);
+  }
+
+  /* Utils */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .bg-light {
+    background: var(--color-light);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-description {
+    font-size: var(--text-lg);
+    color: var(--color-gray-600);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .case-content {
+      grid-template-columns: 1fr;
+    }
+
+    .mockup-sidebar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .process-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .feature-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .model-card.featured {
+      transform: scale(1);
+    }
+  }
+</style>
